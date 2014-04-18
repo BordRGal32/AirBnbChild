@@ -10,7 +10,7 @@
     <h4> Bathrooms: </h4>
     <h5><%= @listing.bathrooms %></h5>
     <h4> Price: </h4>
-    <h5><%= @listing.price %></h5>
+    <h5><%= number_to_currency(@listing.price) %></h5>
   </div>
 
   <div class='col-md-6'>

@@ -1,12 +1,11 @@
 class ListingsController < ApplicationController
   def index
-    @query = params[:query]
-    if params[:query] == nil
-      @listing = Listing.all
-    else
-      @listing = Listing.search(params[:query])
+    respond_to do |format|
+      format.html { @listings = Listing.all }
+      format.js {@listings = Listing.basic_search(params[:search])}
     end
   end
+
   def new
     @listing = Listing.new
     @image = Image.new
@@ -14,20 +13,15 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
-
     @event = Event.new
     @month = (params[:month] || (Time.zone || Time).now.month).to_i
     @year = (params[:year] || (Time.zone || Time).now.year).to_i
     @shown_month = Date.civil(@year, @month)
     event_strips = Event.event_strips_for_month(@shown_month)
     @event_strips = []
-
-      event_strips.each.with_index do |day, index|
-        @event_strips << []
-
-        #this looks at each day of the month
-        day.each do |event|
-          #this looks at the event for every day
+    event_strips.each.with_index do |day, index|
+      @event_strips << []
+      day.each do |event|
         if event == nil
           @event_strips[index] << nil
         elsif event[:name] == @listing.title

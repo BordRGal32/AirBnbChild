@@ -23,16 +23,24 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    @listing = Listing.find(event_params[:listing_id])
+
     @event = Event.new(event_params)
 
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @event }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+   if @listing.is_booked(@event)
+
+      respond_to do |format|
+        if @event.save
+          format.html { redirect_to @event, notice: 'Event was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @event }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:notice] = "Listing is already booked"
+      redirect_to :back
     end
   end
 
