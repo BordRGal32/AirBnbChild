@@ -1,0 +1,11 @@
+ <%= form_for [@listing, @rating] do |f| %>
+     <div class="row lead">
+      <div id="stars" class="starrr"></div>
+    </div>
+    <div class="form-group">
+        <%= f.hidden_field :score, :id => "score"  %>
+
+         <%= f.submit "Submit Rating", :class => "btn" %>
+       </div>
+    <% end %>
+

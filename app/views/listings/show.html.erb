@@ -24,13 +24,44 @@
 <hr>
 
 <div class="row">
-  <button class="new hide_buttons btn-info">Book This Listing</button>
+  <div class="col-md-6">
+    <div class="add_rating">
+     <%= render("ratings/form") %>
+     </div>
+  </div>
+  <div class="col-md-6">
+    <h5> Average Rating </h5>
+ <% if @listing.average_rating.nil? %>
+          <dd><p>No rating yet.</dd>
+          <% else %>
+          <dd>
+          <% stars = "<span class='glyphicon glyphicon-star'></span>".html_safe %>
+          <% @listing.average_rating.to_i.times do %>
+            <%= stars %>
+          <% end %>
+          <% empty = "<span class='glyphicon glyphicon-star-empty'></span>".html_safe %>
+          <% empty_stars = 5 - @listing.average_rating.to_i %>
+          <% empty_stars.times do %>
+            <%= empty %>
+          <% end %>
+        <% end %></dd>
+
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <button class="new hide_buttons btn btn-info">Book Listing</button>
   <div class="hidden_form">
     <h1>Bookings:</h1>
     <%= raw(event_calendar) %><br>
     <%= render('events/form') %>
   </div>
 </div>
+
+
+
 
 
 

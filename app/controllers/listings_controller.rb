@@ -13,6 +13,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @rating = Rating.new
     @event = Event.new
     @month = (params[:month] || (Time.zone || Time).now.month).to_i
     @year = (params[:year] || (Time.zone || Time).now.year).to_i

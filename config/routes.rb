@@ -8,5 +8,6 @@ Airbnbchild::Application.routes.draw do
   resources :users, :only => [:show, :index]
   resources :listings do
     resources :images, :only => [:index, :create, :destroy]
+    resources :ratings, :only => [:create]
   end
 end
