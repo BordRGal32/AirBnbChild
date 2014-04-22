@@ -1,15 +1,20 @@
 <div class="listingList">
   <ul>
-    <% @listings.each do |listing| %>
-      <div class="row">
-        <div class='col-md-8'>
-          <li><strong><%= link_to listing.title, listing %></strong>
-            <br> <strong>Description:</strong> <%= listing.description %> <br> <strong>Location:</strong> <%= listing.location%>
+
+      <% if @listings != nil %>
+      <% @listings.each do |listing| %>
+        <div class="row">
+          <div class='col-md-8'>
+            <li><strong><%= link_to listing.title, listing %></strong>
+              <br> <strong>Description:</strong> <%= listing.description %> <br> <strong>Location:</strong> <%= listing.location%>
+          </div>
+          <div class='col-md-4'>
+            <% if listing.images[0] != nil %>
+            <%= image_tag listing.images[0].photo.url(:thumb) %></l1><br><br>
+            <% end %>
         </div>
-        <div class='col-md-4'>
-          <%= image_tag listing.images[0].photo.url(:thumb) %></l1><br><br>
       </div>
-    </div>
+      <% end %>
     <% end %>
   </ul>
 </div>

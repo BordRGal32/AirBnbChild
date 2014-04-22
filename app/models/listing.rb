@@ -23,5 +23,4 @@ class Listing < ActiveRecord::Base
     end
     sum/self.ratings.length
   end
-
 end

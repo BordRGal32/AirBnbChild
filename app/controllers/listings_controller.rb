@@ -1,8 +1,11 @@
 class ListingsController < ApplicationController
   def index
+
     respond_to do |format|
+
       format.html { @listings = Listing.all }
       format.js {@listings = Listing.basic_search(params[:search])}
+
     end
   end
 
@@ -12,6 +15,7 @@ class ListingsController < ApplicationController
   end
 
   def show
+
     @listing = Listing.find(params[:id])
     @rating = Rating.new
     @event = Event.new

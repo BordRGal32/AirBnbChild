@@ -31,9 +31,9 @@
   </div>
   <div class="col-md-6">
     <h5> Average Rating </h5>
- <% if @listing.average_rating.nil? %>
+    <% if @listing.ratings.length == 0 %>
           <dd><p>No rating yet.</dd>
-          <% else %>
+    <% else %>
           <dd>
           <% stars = "<span class='glyphicon glyphicon-star'></span>".html_safe %>
           <% @listing.average_rating.to_i.times do %>
