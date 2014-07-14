@@ -4,7 +4,6 @@ Purpose:
 Completed as part of the Epicodus curriculum. We had two days to build a mock AirBnb site. One goal
 of the exorcise was incorporating new gems into the code base. 
 
-____________________________________________________________________________________
 
 * As a user, I want to create an account with a username.  (Completed USING DEVISE)
 * As a user, I want to be able to signin with my username. (Complete)
