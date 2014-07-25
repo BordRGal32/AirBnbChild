@@ -1,19 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @event.name %>
+  <strong>Congratulations You Just Booked:</strong>
+  <p><%= @event.name %></p>
 </p>
 
 <p>
-  <strong>Start at:</strong>
-  <%= @event.start_at %>
+  <strong>Beginning:</strong>
+  <%= @event.start_at.strftime("%B %d, %Y") %>
 </p>
 
 <p>
-  <strong>End at:</strong>
-  <%= @event.end_at %>
+  <strong>Ending:</strong>
+  <%= @event.end_at.strftime("%B %d. %Y") %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Go back to Listings', root_path %>
