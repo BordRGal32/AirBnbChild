@@ -5,4 +5,7 @@ development:
 test:
   adapter: postgresql
   database: Airbnbchild_test
+production:
+    adapter: postgresql
+    database: Airbnbchild_development
 
